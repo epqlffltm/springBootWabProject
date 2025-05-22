@@ -5,11 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class FirstController {
+public class TwoController {
 
-    @GetMapping("/hi")
-    public String niceToMeeTou(Model model){
-        model.addAttribute("username","van♂darkhom");
-        return "greetings";
+    @GetMapping("/bye")
+    public String seeYouNext(Model model){
+        model.addAttribute("username","베지터");
+        return "goodbye";
     }
 }
