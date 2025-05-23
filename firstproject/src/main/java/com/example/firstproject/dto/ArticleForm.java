@@ -6,9 +6,14 @@ import lombok.ToString;
 
 @AllArgsConstructor
 @ToString
-public class ArticleFrom {
+public class ArticleForm {
+    private Long id;
     private String title;
     private String content;
+
+    public Article toEntity(){
+        return new Article(id, title, content);
+    }
 
 /*    public ArticleFrom(String title, String content) {
         this.title = title;
@@ -23,7 +28,4 @@ public class ArticleFrom {
                 '}';
     }
 */
-    public Article toEntity() {
-        return new Article(null,title,content);
-    }
 }
