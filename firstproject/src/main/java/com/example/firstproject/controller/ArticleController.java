@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -55,5 +56,15 @@ public class ArticleController {
         model.addAttribute("articleList", articlesEntityList);
         //3. 뷰 페이지 설정하기
         return "articles/index";
+    }
+
+    @GetMapping("/articles/{id}/edit")
+    public String edit(@PathVariable Long id, Model model) {
+        // 수정할 데이터 가져오기
+        Article articleEntity = articleRepository.findById(id).orElse(null);
+        // 모델에 데이터 등록하기
+        model.addAttribute("article", articleEntity);
+        // 뷰 페이지 설정하기
+        return "articles/edit";
     }
 }
