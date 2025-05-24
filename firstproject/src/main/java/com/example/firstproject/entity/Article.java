@@ -21,6 +21,8 @@ public class Article {
 
     @Column
     private String content;
+
+
     public void patch(Article article) {
         if (article.title != null)
             this.title = article.title;

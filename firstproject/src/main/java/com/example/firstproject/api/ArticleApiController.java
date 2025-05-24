@@ -2,7 +2,6 @@ package com.example.firstproject.api;
 
 import com.example.firstproject.dto.ArticleForm;
 import com.example.firstproject.entity.Article;
-import com.example.firstproject.repository.ArticleRepository;
 import com.example.firstproject.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +31,14 @@ public class ArticleApiController {
     public ResponseEntity<Article> create(@RequestBody ArticleForm dto){
         Article created = articleService.create(dto);
         return (created != null)?ResponseEntity.status(HttpStatus.OK).body(created):ResponseEntity.status(HttpStatus.BAD_REQUEST).build();//삼항연산자
-                //articleRepository.save(created);
+        //articleRepository.save(created);
     }
-//
+    //
 //    //PATCH
     @PatchMapping("/apt/articles/{id}")
-    public ResponseEntity<Article> update(@PathVariable long id, @RequestBody ArticleForm dto){
+    public ResponseEntity<Article> update(@PathVariable long id, @RequestBody ArticleForm dto){return null;}
 
-    }
-//    //DELETE
+    //    //DELETE
     @DeleteMapping("/api/articles/{id}")
     public ResponseEntity<Article>delete(@PathVariable Long id){
         Article deleted = articleService.delete(id);
