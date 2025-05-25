@@ -9,11 +9,11 @@
     </thead>
     <tbody>
     {{#article}}
-    <tr>
-        <th>{{id}}</th>
-        <td>{{title}}</td>
-        <td>{{content}}</td>
-    </tr>
+        <tr>
+            <th>{{id}}</th>
+            <td>{{title}}</td>
+            <td>{{content}}</td>
+        </tr>
     {{/article}}
     </tbody>
 </table>
@@ -22,4 +22,5 @@
 <a href="/articles/{{article.id}}/delete" class="btn btn-danger">Delete</a>
 <a href="/articles">Go to Article List</a>
 
+{{>comments/_comments}} <!-- 상세 페이지에 댓글 뷰 파일 삽입 -->
 {{>layouts/footer}}

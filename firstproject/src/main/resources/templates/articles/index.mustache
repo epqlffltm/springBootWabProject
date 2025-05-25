@@ -1,7 +1,6 @@
 {{>layouts/header}}
 <table class="table">
     <thead>
-    {{#articleList}}{{/articleList}}
     <tr>
         <th scope="col">Id</th>
         <th scope="col">Title</th>
@@ -9,13 +8,13 @@
     </tr>
     </thead>
     <tbody>
-    {{#article}}
+    {{#articleList}}
         <tr>
             <th>{{id}}</th>
-            <td><a href="/articles/{{id}}">{{title}}</a> </td>
+            <td><a href="/articles/{{id}}">{{title}}</a></td>
             <td>{{content}}</td>
         </tr>
-    {{/article}}
+    {{/articleList}}
     </tbody>
 </table>
 

@@ -8,24 +8,10 @@ import lombok.ToString;
 @ToString
 public class ArticleForm {
     private Long id;
-    private String title;
-    private String content;
+    private String title; // 제목을 받을 필드
+    private String content; // 내용을 받을 필드
 
-    public Article toEntity(){
+    public Article toEntity() {
         return new Article(id, title, content);
     }
-
-/*    public ArticleFrom(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
-*/
-/*   @Override
-    public String toString() {
-        return "ArticleFrom{" +
-                "title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                '}';
-    }
-*/
 }
