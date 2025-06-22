@@ -1,26 +1,23 @@
 {{>layouts/header}}
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Title</th>
-        <th scope="col">Content</th>
-    </tr>
-    </thead>
-    <tbody>
-    {{#article}}
-        <tr>
-            <th>{{id}}</th>
-            <td>{{title}}</td>
-            <td>{{content}}</td>
-        </tr>
-    {{/article}}
-    </tbody>
-</table>
 
-<a href="/articles/{{article.id}}/edit" class="btn btn-primary">Edit</a>
-<a href="/articles/{{article.id}}/delete" class="btn btn-danger">Delete</a>
-<a href="/articles">Go to Article List</a>
+<div class="container mt-5">
+    <article class="card shadow-sm p-4">
+        <header class="mb-4">
+            <h1 class="card-title">{{article.title}}</h1>
+            <p class="text-muted">게시글 ID: {{article.id}}</p>
+        </header>
+        <section class="card-text mb-4" style="white-space: pre-wrap; font-size: 1.25rem; line-height: 1.8;">
+            {{article.content}}
+        </section>
 
-{{>comments/_comments}} <!-- 상세 페이지에 댓글 뷰 파일 삽입 -->
+        <footer>
+            <a href="/articles/{{article.id}}/edit" class="btn btn-primary me-2">수정</a>
+            <a href="/articles/{{article.id}}/delete" class="btn btn-danger me-2" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
+            <a href="/articles" class="btn btn-secondary">목록으로</a>
+        </footer>
+    </article>
+
+    {{>comments/_comments}}
+</div>
+
 {{>layouts/footer}}
