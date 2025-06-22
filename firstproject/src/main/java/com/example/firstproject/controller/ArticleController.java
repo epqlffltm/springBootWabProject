@@ -7,12 +7,16 @@ import com.example.firstproject.repository.ArticleRepository;
 import com.example.firstproject.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -65,9 +69,19 @@ public class ArticleController {
 
 
     @GetMapping("/articles")
-    public String index(Model model) {
-        List<Article> articleEntityList = articleRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
-        model.addAttribute("articleList", articleEntityList);
+    public String index(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            Model model) {
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
+        Page<Article> articlePage = articleRepository.findAll(pageable);
+
+        model.addAttribute("articlePage", articlePage);
+        model.addAttribute("prevPage", page > 0 ? page - 1 : 0);
+        model.addAttribute("nextPage", page < articlePage.getTotalPages() - 1 ? page + 1 : page);
+        model.addAttribute("pageNumberPlusOne", page + 1);
+
         return "articles/index";
     }
 
