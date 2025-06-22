@@ -4,15 +4,15 @@
     <h2 class="mb-4">게시판 목록</h2>
 
     {{#articleList}}
-        <div class="card mb-3 shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title mb-0">
-                    <a href="/articles/{{id}}" class="text-decoration-none text-dark">
+        <a href="/articles/{{id}}" class="text-decoration-none text-dark">
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-0">
                         {{title}}
-                    </a>
-                </h5>
+                    </h5>
+                </div>
             </div>
-        </div>
+        </a>
     {{/articleList}}
 
     <div class="mt-4">

@@ -7,6 +7,7 @@ import com.example.firstproject.repository.ArticleRepository;
 import com.example.firstproject.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,15 +62,15 @@ public class ArticleController {
         return "articles/show";
     }
 
+
+
     @GetMapping("/articles")
     public String index(Model model) {
-        // 1. 모든 데이터 가져오기
-        List<Article> articleEntityList = articleRepository.findAll();
-        // 2. 모델에 데이터 등록하기
+        List<Article> articleEntityList = articleRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
         model.addAttribute("articleList", articleEntityList);
-        // 3. 뷰 페이지 설정하기
         return "articles/index";
     }
+
     @GetMapping("/articles/{id}/edit")
     public String edit(@PathVariable Long id, Model model) {
         // 수정할 데이터 가져오기

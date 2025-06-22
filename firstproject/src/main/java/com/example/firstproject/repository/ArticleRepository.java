@@ -1,11 +1,8 @@
 package com.example.firstproject.repository;
 
 import com.example.firstproject.entity.Article;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.ArrayList;
-
-public interface ArticleRepository extends CrudRepository<Article, Long> {
-    @Override
-    ArrayList<Article>findAll();
+public interface ArticleRepository extends JpaRepository<Article, Long> {
+    // findAll()은 JpaRepository에서 기본 지원하며 List 반환
 }
